@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  backend:
+    container_name: backend
+    env_file:
+      - ./.env
+    build:
+      context: ./backend
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+    command:
+      - /start.sh
+    expose:
+      - "80:80"
+    # ports:
+    #   - "80:8882"
+
+  nginx:
+    container_name: nginx
+    build:
+      dockerfile:
+        ./nginx/Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "8884:8884"
+    # volumes:
+    #   - ./nginx/prod.conf:/etc/nginx/nginx.conf:ro

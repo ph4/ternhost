@@ -1,0 +1,7 @@
+[submodule "backend"]
+	path = backend
+	url = git@github.com:ph4/ternhost-back.git
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:ph4/ternhost-front.git
+	branch = axios
