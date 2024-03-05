@@ -9,6 +9,8 @@ services:
       context: ./backend
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
+    environment:
+      - BACKEND_DEVMODE=1
     command:
       - /start-reload.sh
     expose:
